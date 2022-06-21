@@ -1,0 +1,82 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap");
+
+:root {
+  --bg-color: hsl(49 37% 94%);
+  --typewriterspeed: 7s;
+  --typingdelay: 2s;
+}
+
+body {
+  min-height: 100vh;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+
+  display: grid;
+  place-content: center;
+  text-align: center;
+
+  background-color: var(--bg-color);
+}
+
+h1 {
+  font-family: "Source Code Pro", monospace;
+  font-size: 4rem;
+
+  position: relative;
+}
+
+p {
+  font-size: 2rem;
+}
+
+h1::before {
+  content: "";
+  background-color: var(--bg-color);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  animation: slide var(--typewriterspeed) steps(25) 2s forwards;
+}
+
+h1::after {
+  content: "";
+  width: 0.3rem;
+  height: 100%;
+  background-color: black;
+  position: absolute;
+  left: 0;
+  animation: blink 350ms linear infinite,
+    slide var(--typewriterspeed) steps(25) 2s forwards;
+}
+
+.subtitle {
+  text-transform: capitalize;
+  transform: translateY(30px);
+  animation: fade_in_up 1.5s ease-in-out calc(var(--typewriterspeed) + 2s)
+    forwards;
+  opacity: 0;
+}
+
+@keyframes slide {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes blink {
+  to {
+    background-color: transparent;
+  }
+}
+
+@keyframes fade_in_up {
+  to {
+    transform: translateY(-30px);
+    opacity: 1;
+  }
+}
